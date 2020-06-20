@@ -3,11 +3,14 @@ package com.anthonyvalle.bookingservice.Models;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Booking {
@@ -19,6 +22,8 @@ public class Booking {
 	private LocalDate bookingDate;
 	private LocalDateTime scheduleDateTime;
 	private BigDecimal bookingPriceQuoted;
+	@OneToMany(mappedBy = "booking", cascade = CascadeType.ALL)
+	private List<WorkOrder> listOfServices;
 
 	public long getId() {
 		return id;
@@ -58,6 +63,14 @@ public class Booking {
 
 	public void setBookingPriceQuoted(BigDecimal bookingPriceQuoted) {
 		this.bookingPriceQuoted = bookingPriceQuoted;
+	}
+
+	public List<WorkOrder> getListOfServices() {
+		return listOfServices;
+	}
+
+	public void setListOfServices(List<WorkOrder> listOfServices) {
+		this.listOfServices = listOfServices;
 	}
 
 	public Booking() {

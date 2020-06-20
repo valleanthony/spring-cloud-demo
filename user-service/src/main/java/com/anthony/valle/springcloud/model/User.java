@@ -1,5 +1,7 @@
 package com.anthony.valle.springcloud.model;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +18,7 @@ public class User {
 	private String email;
 	private String phoneNumber;
 	private String password;
+	private Set<Long> bookingSet;
 
 	public User() {
 
@@ -75,6 +78,14 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public Set<Long> getBookingSet() {
+		return bookingSet;
+	}
+
+	public void setBookingSet(Set<Long> bookingSet) {
+		this.bookingSet = bookingSet;
 	}
 
 }
